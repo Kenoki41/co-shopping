@@ -57,42 +57,12 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/EditItemName"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:onClick="ShowKeyboard"
-                >
-
-            </EditText>
-            <Button
-                android:onClick="onAddItemClick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add"
-                >
-
-            </Button>
-
-        </LinearLayout>
-
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true">
 
         <ListView
@@ -100,14 +70,32 @@
             android:layout_width="390dp"
             android:layout_height="620dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="60dp"
             >
 
         </ListView>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:onClick="onAddItemClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add item">
+
+        </Button>
+
+    </RelativeLayout>
+
 
 
 
