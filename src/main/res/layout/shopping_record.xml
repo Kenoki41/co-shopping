@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".shoppingRecords.ShoppingRecordsMain"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="top"
+        android:text="Shopping Record"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        >
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView111"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="51dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/viewChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerView111"
+            android:layout_centerHorizontal="true"
+            android:onClick="onClickPieChart"
+            android:text="View Chart" />
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

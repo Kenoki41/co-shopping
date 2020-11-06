@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#ffffff</color>
+    <color name="textColorDefault">#000000</color>
+    <color name="textColorChecked">#cccccc</color>
+    <color name="colorListItemBackground">@android:color/background_light</color>
+    <color name="colorSecondaryLight">#ffc046</color>
+    <color name="colorCritical">#FF5722</color>
+
+    <color name="color_one">#fb7268</color>
+    <color name="color_white">#ededf2</color>
+    <color name="color_two">#E3E0E0</color>
+
+    <color name="R">#FFA726</color>
+    <color name="Python">#66BB6A</color>
+    <color name="CPP">#EF5350</color>
+    <color name="Java">#29B6F6</color>
+</resources>

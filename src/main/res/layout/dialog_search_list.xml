@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/etSearchList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="invitation code"
+        android:padding="20dp"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="10dp"
+        />
+
+
+</LinearLayout>
+

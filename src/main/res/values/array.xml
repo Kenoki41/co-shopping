@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="catName">
+        <item>Food</item>
+        <item>Clothing</item>
+        <item>Transport</item>
+        <item>Housing</item>
+        <item>Else</item>
+    </string-array>
+
+</resources>

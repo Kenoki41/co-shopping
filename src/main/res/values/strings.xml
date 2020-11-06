@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">Co-Shopping List</string>
+    <string name="dialog_delete_list_title">Delete a List</string>
+    <string name="dialog_delete_list_msg">Do you want to delete this List?</string>
+    <string name="delete_yes">YES</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="dialog_delete_item_title">Delete an Item</string>
+    <string name="dialog_delete_item_msg">Do you want to delete this Item?</string>
+
+    <string name="edit">Edit</string>
+    <string name="editItemInfo">Edit Item</string>
+
+    <string name="dialog_cancel_edit_list_title">Are you sure to cancel this edit?</string>
+    <string name="dialog_cancel_msg"> Your unsaved edit will be discarded if you click YES.</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+
+    <string name="page_name">Shopping List</string>
+    <string name="item_name">Enter Item name</string>
+    <string name="item_price">Enter Item price</string>
+    <string name="item_code">Enter Item code</string>
+    <string name="edit_ok">OK</string>
+
+    <string name="edit_item">Edit Item</string>
+
+    <string name="add_new_Item">Add A New Item</string>
+    <string name="add_new_item">Create New Item</string>
+    <string name="access_group_info">Group Info</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="hint_new_item">New Item</string>
+    <string name="context_menu_edit">Edit</string>
+    <string name="context_menu_delete">Delete</string>
+    <string name="action_delete_checked">Delete checked items</string>
+    <string name="remove_checked_items">Remove all checked items?</string>
+    <string name="ok">OK</string>
+    <string name="file_location">File location</string>
+    <string name="error_description_empty">Item description may not be empty!</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="new_list">Create new list</string>
+    <string name="delete_list">Delete list</string>
+    <string name="confirm_delete_list">Delete list &lt;b>%1$s&lt;/b>?</string>
+    <string name="add_new_list">Add a new list</string>
+    <string name="add_list_hint">Name of new list</string>
+    <string name="fragment_invalid_text">No lists are available.</string>
+    <string name="done">Done</string>
+    <string name="swap">Swap</string>
+    <string name="lists">Lists</string>
+    <string name="about">About</string>
+    <string name="error_list_name_empty">The list name may not be empty!</string>
+    <string name="error_list_exists">This list already exists</string>
+    <string name="share">Share</string>
+    <string name="warn_ignore_directory">Cannot access configured directory!</string>
+    <string name="sort">Sort</string>
+    <string name="ascending">A-Z</string>
+    <string name="descending">Z-A</string>
+    <string name="warn_no_dir_access">Cannot access selected directory!</string>
+    <string name="err_create_dir">Cannot create \'%s\'</string>
+    <string name="err_illegal_char">Filename contains illegal character \'/\'</string>
+    <string name="select_storage_location">Select storage location</string>
+    <string name="create_new_dir">Create new directory</string>
+    <string name="name_of_new_dir">Name of new directory</string>
+    <string name="selected_directory">Selected directory:</string>
+    <string name="duplicate_warning">\'%s\' is already on the list</string>
+    <string name="checked_first">Checked first</string>
+    <string name="unchecked_first">Unchecked first</string>
+    <string name="err_cannot_delete_list">Cannot delete list</string>
+    <string name="err_share_list">Cannot share list</string>
+    <string name="about_title">&lt;h1&gt;About&lt;/h1&gt;</string>
+    <string name="about_version">&lt;h3&gt;Version&lt;/h3&gt; You are using version &lt;tt&gt;v%1$s&lt;/tt&gt;</string>
+    <string name="about_github">&lt;h3&gt;Source code, Issues, Contributing&lt;/h3&gt; This project is hosted on &lt;a href="https://github.com/woefe/ShoppingList"&gt;Github&lt;/a&gt;</string>
+    <string name="about_license">&lt;h3&gt;License&lt;/h3&gt; ShoppingList is licensed under &lt;a href=&quot;https://raw.githubusercontent.com/woefe/ShoppingList/master/COPYING&quot;&gt;GPLv3+&lt;/a&gt;</string>
+    <string name="about_author">&lt;h3&gt;Author&lt;/h3&gt; Wolfgang Popp</string>
+    <string name="about_contributors">&lt;h3&gt;Contributors&lt;/h3&gt; &#8226; &lt;b&gt;Pierre Rudloff&lt;/b&gt; (French translation)&lt;br/&gt; &#8226; &lt;b&gt;unbranched&lt;/b&gt; (Italian translation)&lt;br/&gt;</string>
+
+
+</resources>
