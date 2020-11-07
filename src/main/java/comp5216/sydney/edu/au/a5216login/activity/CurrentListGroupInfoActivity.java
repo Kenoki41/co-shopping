@@ -113,7 +113,7 @@ public class CurrentListGroupInfoActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String responseStr = OKHttpTool.get("http://101.37.22.230:8080/list/userNames?listId=" + userId);
+                    String responseStr = OKHttpTool.get("http://101.37.22.230:8080/list/userNames?listId=" + listId);
                     JSONObject jsonObject = JSON.parseObject(responseStr);
                     runOnUiThread(new Runnable() {
                         @Override

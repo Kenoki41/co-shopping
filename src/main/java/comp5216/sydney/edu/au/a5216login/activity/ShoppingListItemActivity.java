@@ -33,6 +33,9 @@ import java.util.List;
 import comp5216.sydney.edu.au.a5216login.R;
 import comp5216.sydney.edu.au.a5216login.adapter.CurrItemAdapter;
 import comp5216.sydney.edu.au.a5216login.entity.Item;
+import comp5216.sydney.edu.au.a5216login.entity.ShoppingList;
+import comp5216.sydney.edu.au.a5216login.login.LoginActivity;
+import comp5216.sydney.edu.au.a5216login.login.helper.SessionManager;
 import comp5216.sydney.edu.au.a5216login.util.OKHttpTool;
 
 public class ShoppingListItemActivity extends AppCompatActivity {
@@ -49,6 +52,7 @@ public class ShoppingListItemActivity extends AppCompatActivity {
     Bundle bundle;
     TextView textView;
     private ProgressDialog pDialog;
+    SessionManager session;
     Long userId, listId, leaderId;
     String invitationCode;
 
@@ -168,13 +172,13 @@ public class ShoppingListItemActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.create_new_item:
-                Intent intent = new Intent(ShoppingListItemActivity.this, AddItemActivity.class);
-                if (intent != null) {
-                    // brings up the second activity
-                    startActivityForResult(intent, ADD_ITEM_REQUEST_CODE);
-                    currItemAdapter.notifyDataSetChanged();
-                }
+            case R.id.log_out:
+                Intent intent = new Intent(ShoppingListItemActivity.this, LoginActivity.class);
+                //set the login status to false , clean the userId
+                session.setLogin(false);
+                session.setUserId("");
+                // brings up the second activity
+                startActivity(intent);
                 return true;
 
 
