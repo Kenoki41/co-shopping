@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,8 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp5216.sydney.edu.au.a5216login.R;
-import comp5216.sydney.edu.au.a5216login.adapter.CurrListAdapter;
-import comp5216.sydney.edu.au.a5216login.entity.CoList;
 import comp5216.sydney.edu.au.a5216login.util.OKHttpTool;
 
 public class CurrentListGroupInfoActivity extends AppCompatActivity {
@@ -113,7 +110,7 @@ public class CurrentListGroupInfoActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String responseStr = OKHttpTool.get("http://101.37.22.230:8080/list/userNames?listId=" + userId);
+                    String responseStr = OKHttpTool.get("http://101.37.22.230:8080/list/userNames?listId=" + listId);
                     JSONObject jsonObject = JSON.parseObject(responseStr);
                     runOnUiThread(new Runnable() {
                         @Override

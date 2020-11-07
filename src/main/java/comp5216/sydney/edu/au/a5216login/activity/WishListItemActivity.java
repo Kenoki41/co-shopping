@@ -49,6 +49,8 @@ public class WishListItemActivity extends AppCompatActivity {
     TextView textView;
     private ProgressDialog pDialog;
     private SessionManager session;
+    Long userId, listId, leaderId;
+    String invitationCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,10 @@ public class WishListItemActivity extends AppCompatActivity {
         //get info from main activity
         bundle = getIntent().getBundleExtra("message");
         this.setTitle(bundle.get("listName").toString());
+        userId = bundle.getLong("userId");
+        invitationCode = bundle.get("invitationCode").toString();
+        listId = bundle.getLong("listId");
+        leaderId = bundle.getLong("leaderId");
 
         //populate the screen using the layout
         setContentView(R.layout.activity_curr_wish_list);
@@ -135,6 +141,11 @@ public class WishListItemActivity extends AppCompatActivity {
             case R.id.group_info:
                 intent = new Intent(WishListItemActivity.this, CurrentListGroupInfoActivity.class);
                 if (intent != null) {
+                    bundle.putLong("userId", userId);
+                    bundle.putString("invitationCode", invitationCode);
+                    bundle.putLong("listId", listId);
+                    bundle.putLong("leaderId", leaderId);
+                    intent.putExtra("message", bundle);
                     // brings up the second activity
                     startActivityForResult(intent, ADD_ITEM_REQUEST_CODE);
                     currItemAdapter.notifyDataSetChanged();
