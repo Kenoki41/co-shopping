@@ -161,8 +161,7 @@ public class WishListItemActivity extends AppCompatActivity {
                                 String leaderName = data.getString("userName");
                                 textView.setText("Creator: "+leaderName);
                             } else {
-                                Toast.makeText(WishListItemActivity.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-
+                                //Toast.makeText(WishListItemActivity.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             }
                         }
                     });

@@ -40,6 +40,7 @@ public class CurrentListGroupInfoActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     ListView listView;
     TextView createrTextView;
+    String userUrl = OKHttpTool.SERVER_URL + "/user/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,13 @@ public class CurrentListGroupInfoActivity extends AppCompatActivity {
         invitationCode = bundle.get("invitationCode").toString();
         listId = bundle.getLong("listId");
 
-        // Display Leader
-        //displayLeader();
+
 
         // Display List View
         queryAllUser();
 
+        // Display Leader
+        getCreatorName(bundle.get("leaderId"));
         // Assign function to button "Invitation Code"
         inviteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,22 +149,25 @@ public class CurrentListGroupInfoActivity extends AppCompatActivity {
     /**
      * Display list creator
      */
-    private void displayLeader(){
+    private void getCreatorName(Object leaderId) {
         new Thread() {
             @Override
             public void run() {
                 try {
-                    String responseStr = OKHttpTool.get("http://101.37.22.230:8080/list/queryListInfo?invitationCode=" + invitationCode);
+                    String responseStr = OKHttpTool.get(userUrl + leaderId);
                     JSONObject jsonObject = JSON.parseObject(responseStr);
+                    //在子线程中调用ui线程
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (jsonObject.getIntValue("code") == 2000) {
-                                JSONArray data = jsonObject.getJSONArray("data");
-                                String leaderName = data.getString(1);
-                                createrTextView.setText("List Creator: " + leaderName);
-                                }
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                String leaderName = data.getString("userName");
+                                createrTextView.setText("List Creator: "+leaderName);
+                            } else {
+                                //Toast.makeText(WishListItemActivity.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             }
+                        }
                     });
 
                 } catch (IOException e) {
