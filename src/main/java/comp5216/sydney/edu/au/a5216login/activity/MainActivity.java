@@ -283,6 +283,8 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString("invitationCode", coList.getInvitationCode());
                 bundle.putString("listName", coList.getListName());
                 bundle.putLong("leaderId", coList.getLeaderId());
+                bundle.putLong("listId", coList.getListId());
+                bundle.putLong("leaderId",coList.getListId());
 
                 //distinguish shopping list and wish list
                 if (coList.getType() == 1) {
