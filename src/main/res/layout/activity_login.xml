@@ -35,6 +35,22 @@
         android:text="Login"
         android:textColor="@color/white"
         app:backgroundTint="@color/colorPrimary" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/cbRemeber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remember Me"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btnLinkToRegisterScreen"

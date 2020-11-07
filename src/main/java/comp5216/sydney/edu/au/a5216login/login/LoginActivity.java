@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,12 +24,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.fastjson.JSON;
-
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-
 
 import comp5216.sydney.edu.au.a5216login.R;
 import comp5216.sydney.edu.au.a5216login.activity.MainActivity;
@@ -44,9 +41,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button btnLogin, btnLinkToRegister, btnForgotPass;
     private EditText inputEmail, inputPassword;
+    private CheckBox cbRememberUser;
     private ProgressDialog pDialog;
 
     private SessionManager session;
+    private SharedPreferences sp;
 
     String url = OKHttpTool.SERVER_URL;
 
@@ -61,11 +60,25 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnLinkToRegister = findViewById(R.id.btnLinkToRegisterScreen);
         btnForgotPass = findViewById(R.id.btnForgotPassword);
+        cbRememberUser = findViewById(R.id.cbRemeber);
 
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
+
+        //Get the shared preferences object
+        sp = getSharedPreferences("login", Context.MODE_PRIVATE);
+
+        //echo data
+        boolean isRemember = sp.getBoolean("isRemember", false);
+        cbRememberUser.setChecked(isRemember);
+
+        String userName = sp.getString("email", "");
+        inputEmail.setText(userName);
+
+        String userPwd = sp.getString("userPwd", "");
+        inputPassword.setText(userPwd);
 
         // session manager
         session = new SessionManager(getApplicationContext());
@@ -161,16 +174,36 @@ public class LoginActivity extends AppCompatActivity {
                                                 String loginStr = OKHttpTool.post(url + "/login/pwd", JSON.toJSONString(userInput));
                                                 JSONObject loginObj = JSON.parseObject(loginStr);
                                                 if (loginObj.getIntValue("code") == 2000) {
-                                                    Bundle b = new Bundle();
-                                                    b.putString("userId", userId);
-                                                    Intent upanel = new Intent(LoginActivity.this, MainActivity.class);
-                                                    upanel.putExtras(b);
-                                                    upanel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                    startActivity(upanel);
-                                                    session.setLogin(true);
-                                                    session.setUserId(userId);
-                                                    finish();
-                                                    hideDialog();
+                                                    //get sp's editor
+                                                    SharedPreferences.Editor editor = sp.edit();
+                                                    //Determine if the user info need to remember
+                                                    if (cbRememberUser.isChecked()) {
+                                                        session.setLogin(true);
+                                                        session.setUserId(userId);
+                                                        //write data
+                                                        editor.putString("email", inputEmail.getText().toString());
+                                                        editor.putString("userPwd", inputPassword.getText().toString());
+                                                        editor.putBoolean("isRemember", cbRememberUser.isChecked());
+                                                        Bundle b = new Bundle();
+                                                        b.putString("userId", userId);
+                                                        Intent upanel = new Intent(LoginActivity.this, MainActivity.class);
+                                                        upanel.putExtras(b);
+                                                        upanel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                        startActivity(upanel);
+                                                        finish();
+                                                        hideDialog();
+                                                    } else {
+                                                        editor.clear();
+                                                        Bundle b = new Bundle();
+                                                        b.putString("userId", userId);
+                                                        Intent upanel = new Intent(LoginActivity.this, MainActivity.class);
+                                                        upanel.putExtras(b);
+                                                        upanel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                        startActivity(upanel);
+                                                        finish();
+                                                        hideDialog();
+                                                    }
+                                                    editor.commit();
                                                 } else {
                                                     Looper.prepare();
                                                     hideDialog();

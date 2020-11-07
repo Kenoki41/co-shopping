@@ -79,24 +79,6 @@
 
         </LinearLayout>
 
-
-        <ImageButton
-
-            android:id="@+id/ivIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:scaleType="center"
-            android:layout_alignParentRight="true"
-            android:background="@color/cardview_light_background"
-            android:src="@drawable/more"
-            android:onClick="getMoreInfo"
-            android:focusable="false"
-
-            >
-
-        </ImageButton>
     </RelativeLayout>
 
 </LinearLayout>

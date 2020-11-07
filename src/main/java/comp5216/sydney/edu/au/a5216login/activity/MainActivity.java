@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +30,8 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +39,8 @@ import java.util.Map;
 import comp5216.sydney.edu.au.a5216login.R;
 import comp5216.sydney.edu.au.a5216login.adapter.CurrListAdapter;
 import comp5216.sydney.edu.au.a5216login.entity.CoList;
+import comp5216.sydney.edu.au.a5216login.login.LoginActivity;
+import comp5216.sydney.edu.au.a5216login.login.helper.SessionManager;
 import comp5216.sydney.edu.au.a5216login.shoppingRecords.MonthList;
 import comp5216.sydney.edu.au.a5216login.util.OKHttpTool;
 import comp5216.sydney.edu.au.a5216login.util.RandomStringGenerator;
@@ -45,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<CoList> lists = new ArrayList<>();
     ArrayAdapter<CoList> coListArrayAdapter;
     public final int OPEN_LIST_REQUEST_CODE = 648;
-    private ProgressDialog pDialog;
+    ProgressDialog pDialog;
+    SessionManager session;
     Bundle getDataBundle, bundle;
     String listName;
     String leaderName;
@@ -70,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
+        // session manager
+        session = new SessionManager(getApplicationContext());
+
         queryAllLists();
 
     }
@@ -80,6 +91,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void onJoinListClick(View view) {
         joinListDialog();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.list_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.log_out:
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                //set the login status to false , clean the userId
+                session.setLogin(false);
+                session.setUserId("");
+                // brings up the second activity
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void joinListDialog() {
@@ -396,7 +430,13 @@ public class MainActivity extends AppCompatActivity {
                                 lists.clear();
                                 lists.addAll(coLists);
                                 //Collections.sort(lists);
-                                //  lists.sort((o1, o2) -> o2.getTime().compareTo(o1.getTime()));
+                                Collections.sort(lists, new Comparator<CoList>() {
+                                    @Override
+                                    public int compare(CoList o1, CoList o2) {
+                                        // 直接反过来比较
+                                        return o2.getTime().compareTo(o1.getTime());
+                                    }
+                                });
                                 coListArrayAdapter = new CurrListAdapter(MainActivity.this, lists);
 
                                 // Connect the listView and the adapter

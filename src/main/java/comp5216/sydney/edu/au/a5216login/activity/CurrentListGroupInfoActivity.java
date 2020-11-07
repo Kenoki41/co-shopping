@@ -57,6 +57,7 @@ public class CurrentListGroupInfoActivity extends AppCompatActivity {
         listId = bundle.getLong("listId");
 
         // Display Leader
+        //displayLeader();
 
         // Display List View
         queryAllUser();
@@ -158,7 +159,7 @@ public class CurrentListGroupInfoActivity extends AppCompatActivity {
                         public void run() {
                             if (jsonObject.getIntValue("code") == 2000) {
                                 JSONArray data = jsonObject.getJSONArray("data");
-                                String leaderName = jsonObject.getString("leaderName");
+                                String leaderName = data.getString(1);
                                 createrTextView.setText("List Creator: " + leaderName);
                                 }
                             }

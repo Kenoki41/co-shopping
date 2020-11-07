@@ -2,6 +2,8 @@ package comp5216.sydney.edu.au.a5216login.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Item implements Serializable {
@@ -153,9 +155,15 @@ public class Item implements Serializable {
     public void setType(Integer type) {
         this.type = type;
     }
-
-    public Date getDate() {
+    public Date getOriginalDate(){
         return date;
+    }
+
+    public String getDate() {
+        DateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String datime = "";
+
+        return format1.format(date);
     }
 
     public void setDate(Date date) {

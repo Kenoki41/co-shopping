@@ -51,17 +51,6 @@
             android:layout_marginTop="40dp"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/EditItemName"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:onClick="ShowKeyboard"
-                >
-
-            </EditText>
             <Button
                 android:onClick="onAddItemClick"
                 android:layout_width="wrap_content"

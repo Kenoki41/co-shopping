@@ -48,7 +48,6 @@ public class ShoppingListItemActivity extends AppCompatActivity {
     String userUrl = OKHttpTool.SERVER_URL + "/user/";
     Bundle bundle;
     TextView textView;
-    EditText editText;
     private ProgressDialog pDialog;
     Long userId, listId, leaderId;
     String invitationCode;
@@ -70,7 +69,6 @@ public class ShoppingListItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_curr_shopping_list);
         listView = (ListView) findViewById(R.id.listView2);
         textView = findViewById(R.id.tvCreator);
-        editText = findViewById(R.id.EditItemName);
 
 
         // Progress dialog
@@ -161,7 +159,7 @@ public class ShoppingListItemActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.item_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -335,12 +333,4 @@ public class ShoppingListItemActivity extends AppCompatActivity {
     }
 
 
-    public void ShowKeyboard(View view) {
-        editText.setFocusable(true);
-        editText.setFocusableInTouchMode(true);
-        editText.requestFocus();
-        InputMethodManager inputManager =
-                (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.showSoftInput(editText, 0);
-    }
 }
